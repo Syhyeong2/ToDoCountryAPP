@@ -3,3 +3,7 @@ export interface ICountry {
   id: number;
   category: "dreamCountry" | "visitedCountry" | "favoriteCounty";
 }
+
+export interface IProp {
+  category: string;
+}

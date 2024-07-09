@@ -2,55 +2,34 @@ import { useRecoilValue } from "recoil";
 import { countryState } from "../utils/atom";
 import CreactCountry from "../components/creactCountry";
 import Country from "../components/country";
+import CountryList from "../components/countryList";
+import styled from "styled-components";
+
+const Container = styled.div`
+  padding-top: 170px;
+  gap: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const Title = styled.div`
+  font-size: 36px;
+  font-weight: 500;
+  color: tomato;
+`;
 
 export default function Main() {
-  const countries = useRecoilValue(countryState);
-
   return (
-    <div>
-      <h1>내가 가고싶은 나라들</h1>
+    <Container>
+      <Title>내가 가고싶은 나라들</Title>
       <CreactCountry />
-      <ul>
-        {countries?.map(
-          (country) =>
-            country.category === "dreamCountry" && (
-              <Country
-                key={country.id}
-                text={country.text}
-                id={country.id}
-                category={country.category}
-              />
-            )
-        )}
-      </ul>
-      <h1>내가 가본 나라들</h1>
-      <ul>
-        {countries?.map(
-          (country) =>
-            country.category === "visitedCountry" && (
-              <Country
-                key={country.id}
-                text={country.text}
-                id={country.id}
-                category={country.category}
-              />
-            )
-        )}
-      </ul>
-      <h1>내가 좋아하는 나라들</h1>
-      <ul>
-        {countries?.map(
-          (country) =>
-            country.category === "favoriteCounty" && (
-              <Country
-                key={country.id}
-                text={country.text}
-                id={country.id}
-                category={country.category}
-              />
-            )
-        )}
-      </ul>
-    </div>
+      <CountryList category="dreamCountry" />
+      <Title>내가 가본 나라들</Title>
+      <CountryList category="visitedCountry" />
+      <Title>내가 좋아하는 나라들</Title>
+      <CountryList category="favoriteCounty" />
+    </Container>
   );
 }
