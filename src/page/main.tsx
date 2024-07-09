@@ -2,7 +2,6 @@ import { useRecoilValue } from "recoil";
 import { countryState } from "../utils/atom";
 import CreactCountry from "../components/creactCountry";
 import Country from "../components/country";
-import CountriesList from "../components/countriesList";
 
 export default function Main() {
   const countries = useRecoilValue(countryState);
